@@ -155,5 +155,10 @@ local.properties
 .scala_dependencies
 .worksheet
 
+mvnw.cmd
+
+mvnw.cmd
+
+.mvn
 
 *.iml
