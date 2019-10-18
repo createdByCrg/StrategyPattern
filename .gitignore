@@ -157,8 +157,6 @@ local.properties
 
 mvnw.cmd
 
-mvnw.cmd
-
 .mvn
 
 *.iml
