@@ -3,8 +3,9 @@ package com.dakai.strategypattern.strategy;
 import com.dakai.strategypattern.enums.StrategyEnum;
 import com.dakai.strategypattern.strategy.domain.BizResult;
 import com.dakai.strategypattern.strategy.domain.StrategyParam;
+import org.springframework.beans.factory.ListableBeanFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Component;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,14 @@ import java.util.Map;
 public class StrategyContext {
 
     public Map<StrategyEnum, Strategy> strategyMap = new HashMap<>(3);
+
+    public StrategyContext(ListableBeanFactory listableBeanFactory){
+
+        ObjectProvider<Strategy> beanProvider = listableBeanFactory.getBeanProvider(Strategy.class);
+        for (Strategy strategy : beanProvider) {
+            strategyMap.put(strategy.getStrategyEnum(), strategy);
+        }
+    }
 
     /**
      * 执行策略上下文
